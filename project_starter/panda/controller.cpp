@@ -134,6 +134,7 @@ int main() {
 				0, 0, 1,
 				0, 1, 0;
 	OS_R_OT = AngleAxisd(M_PI, Vector3d (0,0,1)).toRotationMatrix() * OS_R_OT;
+	
 	Vector3d OT_X_0 = redis_client.getEigen(RIGID_BODY_POS);
 	Vector4d OT_Q_0 = redis_client.getEigen(RIGID_BODY_ORI);
 	Quaterniond quaternion(OT_Q_0[3], OT_Q_0[0], OT_Q_0[1], OT_Q_0[2]);
