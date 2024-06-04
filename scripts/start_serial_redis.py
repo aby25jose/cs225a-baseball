@@ -8,7 +8,7 @@ if len(sys.argv) == 1:
 	sys.exit()
 
 name = sys.argv[1]
-names = {"chase": "/dev/cu.usbserial-0001"}
+names = {"chase": "/dev/cu.usbserial-0001", "omar": "USB\VID_10C4&PID_EA60\0001"}
 if not name in names:
 	print("ERROR: Please enter one of the following names", names.keys())
 port = names[name]
