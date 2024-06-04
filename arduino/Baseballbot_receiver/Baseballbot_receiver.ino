@@ -5,6 +5,7 @@
 // Green MAC glove Address 2  40:91:51:9F:02:E0
 
 uint8_t glove[] = {0x40, 0x91, 0x51, 0x9F, 0x02, 0xE0};
+int last_value = -1;
 
 //Structure example to receive data
 //Must match the sender structure
@@ -18,11 +19,12 @@ payload data;
 //callback function that will be executed when data is received
 void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   memcpy(&data, incomingData, sizeof(data));
-  Serial.print("Bytes received: ");
-  Serial.println(len);
-  Serial.print("x: ");
-  Serial.println(data.x);
-  Serial.println();
+  //Serial.print("Bytes received: ");
+  //Serial.println(len);
+  //Serial.print("x: ");
+  //Serial.println(data.x);
+  //Serial.println();
+  last_value = data.x;
   if(data.x == 23){
     digitalWrite(23, HIGH);
   }
@@ -52,5 +54,6 @@ void setup() {
 }
  
 void loop() {
+  Serial.println(last_value);
 
 }
