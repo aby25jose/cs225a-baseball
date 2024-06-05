@@ -8,7 +8,7 @@ if len(sys.argv) == 1:
 	sys.exit()
 
 name = sys.argv[1]
-names = {"chase": "/dev/cu.usbserial-0001", "omar": "USB\VID_10C4&PID_EA60\0001"}
+names = {"chase": "/dev/cu.usbserial-0001", "omar": "COM6"}
 if not name in names:
 	print("ERROR: Please enter one of the following names", names.keys())
 port = names[name]
@@ -18,13 +18,25 @@ def main():
     port=6379,
     decode_responses=True)
 	
-	ser = serial.Serial(port, 115200)
+	serPort = serial.Serial(port="COM6", baudrate=115200, bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
+	serialString = ""
 	while True:	
-		RAW = ser.readline().decode("utf-8")
-		text = RAW.replace("\r\n", "")
-		value = int(text)
-		print(text=="23")
-		r.publish("button", str(text=="23"))
+		#RAW = ser.readline().decode("Ascii")
+		decoded = serPort.readline()
+		#serialString = serialString.replace("\r\n", "")
+		# serialString = serialString.replace("\n", "")
+		#serialString = serialString.decode("Ascii")
+		try:
+			decoded = str(decoded.decode("Ascii"))
+			#print(serialString.decode("Ascii"))
+		except:
+			continue
+			print("ERROR")
+		decoded = decoded.replace("\r", "")
+		decoded = decoded.replace("\n", "")
+		# value = int(text)
+		print(decoded=="23")
+		r.publish("button", str(decoded=="23"))
 		#text = RAW.replace("")
 		#print(ser.readline())
 
