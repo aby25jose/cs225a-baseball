@@ -1,0 +1,176 @@
+<?xml version="1.0" ?>
+
+<world name="demo_world" gravity="0.0 0.0 -9.81">
+
+	<robot name="panda_arm_bat">
+		<model dir="${CS225A_URDF_FOLDER}/panda" path="panda_arm_bat.urdf" name="panda_arm_bat" />
+		<origin xyz="0.1 -0.3 0.0" rpy="0 0 0" />
+	</robot>
+
+	<static_object name="Base">
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+        <visual>
+            <origin xyz="1.2 9.7 -0.03" rpy="1.5708  0 0" />
+            <geometry>
+                <mesh filename="${CS225A_URDF_FOLDER}/test_objects/meshes/visual/Baseball_Field.obj" scale="1.3 1.3 1.3"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+            <geometry>
+                <box size="100 100 0.02" />
+            </geometry>
+        </collision>
+    </static_object>
+
+	<static_object name="Base2">
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+        <visual>
+            <origin xyz="0 0 -0.06" rpy="0 0 0" />
+            <geometry>
+                <box size="85 85 0.02" />
+            </geometry>
+			<material name="material">
+		        <color rgba="0.09 0.315 0.045 1.0" />
+	        </material>
+        </visual>
+    </static_object>
+
+	<static_object name="Stadium">
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+        <visual>
+            <origin xyz="-1.4 8.8 -0.04" rpy="1.5708 0 0.785398" />
+			<geometry>
+                <mesh filename="${CS225A_URDF_FOLDER}/test_objects/meshes/visual/NewStadium1.obj" scale="2.9 5.5 2.9"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 -5 0" rpy="1.5708 0 0" />
+            <geometry>
+                <box size="10 50 0.01" />		
+            </geometry>
+        </collision>
+    </static_object>
+
+
+	<dynamic_object name="baseball">
+		<origin xyz="1.0 0.0 1.0" rpy="0 0 0" />
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="0.1" />  
+			<inertia ixx="0.000071" iyy="0.000071" izz="0.000071" ixy="0" ixz="0" iyz="0" /> 
+		</inertial>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="${CS225A_URDF_FOLDER}/test_objects/meshes/visual/Baseball_ball.obj" scale="1 1 1"/>
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<sphere radius="0.0366" />
+			</geometry>
+		</collision>
+	</dynamic_object>
+
+	<static_object name="StrikeZoneTop">
+		<origin xyz="1.2 0.0 0.65" rpy="0 0 0" />
+	    <visual>
+	        <origin xyz="0.0 0.0 -0.0" rpy="0 0 0" />
+	        <geometry>
+				<box size="0.4 0 0.04" />
+	        </geometry>
+	        <material name="material">
+		        <color rgba="0.0 0.0 0.0 1.0" />
+	        </material>
+	    </visual>
+	</static_object>
+
+	<static_object name="StrikeZoneBottom">
+		<origin xyz="1.2 0.0 0.15" rpy="0 0 0" />
+	    <visual>
+	        <origin xyz="0.0 0.0 -0.0" rpy="0 0 0" />
+	        <geometry>
+				<box size="0.4 0 0.04" />
+	        </geometry>
+	        <material name="material">
+		        <color rgba="0.0 0.0 0.0 1.0" />
+	        </material>
+	    </visual>
+	</static_object>
+
+	<static_object name="StrikeZoneLeft">
+		<origin xyz="1.0 0.0 0.4" rpy="0 0 0" />
+	    <visual>
+	        <origin xyz="0.0 0.0 -0.0" rpy="0 0 0" />
+	        <geometry>
+				<box size="0.04 0 0.5" />
+	        </geometry>
+	        <material name="material">
+		        <color rgba="0.0 0.0 0.0 1.0" />
+	        </material>
+	    </visual>
+	</static_object>
+
+	<static_object name="StrikeZoneRight">
+		<origin xyz="1.4 0.0 0.4" rpy="0 0 0" />
+	    <visual>
+	        <origin xyz="0.0 0.0 -0.0" rpy="0 0 0" />
+	        <geometry>
+				<box size="0.04 0 0.5" />
+	        </geometry>
+	        <material name="material">
+		        <color rgba="0.0 0.0 0.0 1.0" />
+	        </material>
+	    </visual>
+	</static_object>
+
+	<light name="light1" type="directional">
+		<position xyz="0.0 5.0 5.0" />
+		<lookat xyz="0.0 -3.0 1.0" />
+	</light>
+
+	<light name="light2" type="directional">
+		<position xyz="0.0 -5.0 5.0" />
+		<lookat xyz="0.0 3.0 5.0" />
+	</light>
+
+	<light name="light3" type="directional">
+		<position xyz="0.0 2.0 10.0" />
+		<lookat xyz="0.0 -1.0 2.0" />
+	</light>
+
+	<camera name="camera_A_fixed">
+		<position xyz="3.7 7 2" /> 
+		<vertical xyz="0.0 0.0 1.0" /> 
+		<lookat xyz="1.2 0 0.5" /> 
+	</camera>
+
+	<camera name="camera_B_overhead">
+		<position xyz="2.2 0 5.0" /> 
+		<vertical xyz="0.0 0.0 1.0" /> 
+		<lookat xyz="1.2 0 0.5" /> 
+	</camera>
+
+	<camera name="camera_C_side">
+		<position xyz="2.5 -2 1" />
+		<vertical xyz="0.0 0.0 1.0" />
+		<lookat xyz="1.0 0 0.5" />
+	</camera>
+
+	<camera name="camera_D_back">
+		<position xyz="2.5 -8.8 1.9" /> 
+		<vertical xyz="0.0 0.0 1.0" /> 
+		<lookat xyz="2.35 -7.8 1.8" /> 
+	</camera>
+
+	<camera name="camera_E_Pitcher">
+		<position xyz="1.2 7 1.5" /> 
+		<vertical xyz="0.0 0.0 1.0" /> 
+		<lookat xyz="1.2 0 1.5" /> 
+	</camera>
+
+</world>
