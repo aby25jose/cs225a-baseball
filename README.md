@@ -13,11 +13,8 @@ cmake .. && make -j4
 ```
 ## Run
 Go to the bin folder and then to the folder of the application you want to run.
-For hw0 for example:
+For example:
 ```
 cd bin/pandabat
 ./controller-pandabat
-```
-
-en(JOINT_ANGLES_KEY, robot->q());
 ```
