@@ -1,5 +1,6 @@
 # cs225a-baseball
 This repository contains the code for the Baseball batting robot project developes for CS 225A : Experimentsal Robotics (Spring 2024). The authors who worked on this repo are Ryan Nguyen, Omar Escoto, Charles Joyner, Aby Jose. 
+![image](https://github.com/aby25jose/cs225a-baseball/assets/114952711/7876b901-31f2-4ed8-b29f-ad7ffbfc86aa)
 
 ## Dependencies
 The project depends on the sai2 libraries. 
